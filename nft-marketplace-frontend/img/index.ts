@@ -32,7 +32,6 @@ import telegram from "./telegram.svg";
 import youtube from "./youtube.svg";
 import vimeo from "./vimeo.svg";
 import vector from "./VectorHIW.svg";
-import zgcmq from "./zgcmq.svg";
 import hero from "./hero.png";
 import nft_1 from "./nft_1.png";
 import getAble from "./getable.png";
@@ -85,5 +84,4 @@ export default {
   vector,
   vimeo,
   youtube,
-  zgcmq,
 };
