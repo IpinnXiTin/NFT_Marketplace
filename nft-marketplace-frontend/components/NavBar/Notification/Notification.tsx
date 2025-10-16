@@ -16,6 +16,7 @@ const Notification = () => {
             alt='profile image'
             width={50}
             height={50}
+            className={Style.img}
           />
         </div>
         <div className={Style.notification_box_info}>
@@ -23,9 +24,7 @@ const Notification = () => {
           <p>Measure action your user...</p>
           <small>3 minutes ago</small>
         </div>
-        <span className={Style.notification_box_new}>
-          
-        </span>
+        <span className={Style.notification_box_new}></span>
       </div>
     </div>
   )
