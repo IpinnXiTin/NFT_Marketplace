@@ -1,0 +1,131 @@
+.FollowerTabCard_box {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--main-bg-color);
+    border-radius: 1.2rem;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    width: 230px;
+    margin: 0.5rem;
+}
+
+.FollowerTabCard_box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Cover image container */
+.FollowerTabCard_box_img {
+    position: relative;
+    width: 100%;
+    height: 120px;
+    overflow: hidden;
+}
+
+.FollowerTabCard_box_img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Rank badge - ở góc trên trái của ảnh cover */
+.FollowerTabCard_rank {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    color: #fff;
+    font-size: 0.75rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 1.5rem;
+    font-weight: 600;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+/* Avatar */
+.FollowerTabCard_box_profile {
+    position: relative;
+    margin-top: -30px;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 1.2rem;
+    z-index: 5;
+}
+
+.FollowerTabCard_box_profile img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 4px solid var(--main-bg-color);
+    background-color: #fff;
+    object-fit: cover;
+}
+
+/* Info section */
+.FollowerTabCard_box_info {
+    text-align: left;
+    padding: 0.8rem 1.2rem 1.2rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.FollowerTabCard_box_info h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+/* Verified badge icon */
+.FollowerTabCard_box_info h4 svg {
+    width: 16px;
+    height: 16px;
+    color: #1da1f2;
+    flex-shrink: 0;
+}
+
+.FollowerTabCard_box_info p {
+    font-size: 0.85rem;
+    color: #8a8a8a;
+    margin: 0;
+    font-weight: 400;
+}
+
+/* Follow button container */
+.FollowerTabCard_box_info_following {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 0.5rem;
+}
+
+.FollowerTabCard_box_info_following a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    color: #666;
+    padding: 0.5rem 1.2rem;
+    border-radius: 2rem;
+    border: 1.5px solid #e0e0e0;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    min-width: 90px;
+}
+
+.FollowerTabCard_box_info_following a:hover {
+    background-color: transparent;
+    color: var(--icons-color);
+    border-color: var(--icons-color);
+}

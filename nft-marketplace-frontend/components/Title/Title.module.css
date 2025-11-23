@@ -1,0 +1,17 @@
+.title{
+    width: 100%;
+}
+
+.title_box{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.title_box h2{
+    font-weight: 800;
+    font-size: 2.5rem;
+}
+
+.title_box p{
+    font-size: 1.2rem;
+}

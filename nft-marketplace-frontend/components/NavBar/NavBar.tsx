@@ -1,8 +1,9 @@
 "use client"
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { DiJqueryLogo } from "react-icons/di";
 
 // IMPORT ICON
 import { MdNotifications } from 'react-icons/md';
@@ -11,9 +12,12 @@ import { CgMenuLeft, CgMenuRight } from 'react-icons/cg';
 
 // INTERNAL IMPORT
 import Style from './NavBar.module.css'
-import { Discover, HelpCenter, Notification, Profile, SideBar } from './index';
+import { Discover, HelpCenter, Notification, Profile } from './index';
 import { Button } from "../componentsindex";
 import images from "../../img";
+
+// IMPORT FROM SMART CONTRACT
+import { NFTMarketplaceContext } from '../../context/NFTMarketplaceContext';
 
 const NavBar = () => {
 
@@ -23,6 +27,8 @@ const NavBar = () => {
 	const [notification, setNotification] = useState(false);
 	const [profile, setProfile] = useState(false);
 	const [openSideMenu, setOpenSideMenu] = useState(false);
+
+	const router = useRouter();
 
 	const openMenu = (e: React.MouseEvent<HTMLParagraphElement>) => {
 		const btnText = (e.target as HTMLElement).innerText;
@@ -74,23 +80,23 @@ const NavBar = () => {
 		}
 	}
 
+	const { account, connectWallet } = useContext(NFTMarketplaceContext);
+
 	return (
 		<div className={Style.navbar}>
 			<div className={Style.navbar_container}>
 				{/* NAVBAR LEFT SECTION */}
 				<div className={Style.navbar_container_left}>
-					<Image
-						src={images.logo}
-						alt='NFT MARKET PLACE'
-						width={100}
-						height={100}
-					/>
+					<div className={Style.logo}>
+						<DiJqueryLogo size={35} onClick={() => router.push('/')}/>
+					</div>
 					<div className={Style.navbar_container_left_box_input}>
 						<div className={Style.navbar_container_left_box_input_box}>
 							<input type="text" placeholder='Search NFT' />
-							<BsSearch onClick={() => {}} className={Style.search_icon} />
+							<BsSearch onClick={() => { }} className={Style.search_icon} />
 						</div>
 					</div>
+					
 				</div>
 
 				{/* NAVBAR RIGHT SECTION */}
@@ -130,7 +136,11 @@ const NavBar = () => {
 
 					{/* CREATE BUTTON SECTION */}
 					<div className={Style.navbar_container_right_button}>
-						<Button btnName="Create" />
+						{!account ? (
+							<Button btnName="Connect" handleClick={() => { connectWallet() }} />
+						) : (
+							<Button btnName="Create" handleClick={() => { router.push('/uploadNFT') }} />
+						)}
 					</div>
 
 					{/* USER PROFILE */}
@@ -140,33 +150,16 @@ const NavBar = () => {
 								src={images.user1}
 								alt="Profile"
 								width={40}
-								height={40} 
+								height={40}
 								onClick={() => openProfile()}
 								className={Style.navbar_container_right_profile_box}
 							/>
 
-							{profile && <Profile />}
+							{profile && <Profile account={account} />}
 						</div>
-					</div>
-
-					{/* MENU BUTTON */}
-					<div className={Style.navbar_container_right_menuBtn}>
-						<CgMenuRight
-							className={Style.menuIcon}
-							onClick={() => openSideBar()}
-						/>
 					</div>
 				</div>
 			</div>
-
-			{/* SIDEBAR COMPONENT */}
-			{
-				openSideMenu && (
-					<div className={Style.sideBar}>
-						<SideBar setOpenSideMenu={setOpenSideMenu} />
-					</div>
-				)
-			}
 		</div>
 	)
 }

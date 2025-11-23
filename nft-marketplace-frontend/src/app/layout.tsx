@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import "../app/styles/globals.css";
 import { NavBar, Footer } from "../../components/componentsindex";
+
+import { NFTMarketplaceProvider } from "../../context/NFTMarketplaceContext";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,11 +16,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className="antialiased bg-white text-gray-900"
-      >
-        <NavBar />
-        
+      <body>
+        <NFTMarketplaceProvider>
+          <NavBar />
+          {children}
+          <Footer />
+        </NFTMarketplaceProvider>
       </body>
     </html>
   );
